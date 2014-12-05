@@ -9,3 +9,5 @@ a.code = fhir.primitives.Code('home')
 a.code = 'temp'
 a.period = fhir.complex.Period(1, 2)
 
+b = fhir.complex.HumanName()
+b.use = fhir.primitives.Code('official')
