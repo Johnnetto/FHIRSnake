@@ -1,8 +1,10 @@
 import fhir.primitives
+import fhir.complex
+
 
 class HumanName:
     """
-    A humans name with the ability to identify parts and usage.
+    A human name with the ability to identify parts and usage.
     Names may be changed, or repudiated, or people may have different names in different contexts.
     Names may be divided into parts of different type that have variable significance depending on
     context, though the division into parts does not always matter. With personal names, the different
@@ -35,7 +37,7 @@ class HumanName:
         self.__suffix = []
 
         # Indicates the period of time when this name was valid for the named person.
-        self.__period = Period('', '')
+        self.__period = fhir.complex.Period('', '')
 
     @property
     def use(self):
@@ -45,13 +47,13 @@ class HumanName:
     def use(self, use):
         if not isinstance(use, fhir.primitives.Code) and not isinstance(use, str):
             raise TypeError('A code value must be of type Code or str.')
-        struse = use
+        string_use = use
         if isinstance(use, fhir.primitives.Code):
-            struse = use.__str__()
-        if struse != 'usual' and struse != 'official' and struse != 'temp' and struse != 'anonymous' \
-                and struse != 'old' and struse != 'maiden':
+            string_use = use.__str__()
+        if string_use != 'usual' and string_use != 'official' and string_use != 'temp' and string_use != 'anonymous' \
+                and string_use != 'old' and string_use != 'maiden':
             raise ValueError('A Code value must be usual, official, temp, anonymous, old or maiden.')
-        self.__use = fhir.primitives.Code(struse)
+        self.__use = fhir.primitives.Code(string_use)
 
     @property
     def text(self):
@@ -69,7 +71,7 @@ class HumanName:
 
     @period.setter
     def period(self, period):
-        if not isinstance(period, Period):
+        if not isinstance(period, fhir.complex.Period):
             raise TypeError('A period value must be of type Period.')
 
     def str(self):
