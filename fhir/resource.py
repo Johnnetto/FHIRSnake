@@ -12,7 +12,7 @@ class Resource:
     def language(self):
         return self.__language
 
-    @code.setter
+    @language.setter
     def language(self, code):
         if not isinstance(code, fhir.primitive.Code):
             raise TypeError('code has to be a fhir.primitive.Code instance')
