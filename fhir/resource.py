@@ -15,5 +15,5 @@ class Resource:
     @code.setter
     def language(self, code):
         if not isinstance(code, fhir.primitive.Code):
-            raise TypeError('code has to be a fhir.primitive.Code instance')ld.')
+            raise TypeError('code has to be a fhir.primitive.Code instance')
         self.__language = code
