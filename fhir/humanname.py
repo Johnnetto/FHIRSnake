@@ -1,4 +1,4 @@
-import fhir.primitives
+import fhir.primitive
 import fhir.complex
 
 
@@ -16,7 +16,7 @@ class HumanName:
     def __init__(self):
         # Identifies the purpose for this name.
 
-        self.__use = fhir.primitives.Code('home')
+        self.__use = fhir.primitive.Code('home')
 
         # A full text representation of the name.
         self.__text = ' '
@@ -45,15 +45,15 @@ class HumanName:
 
     @use.setter
     def use(self, use):
-        if not isinstance(use, fhir.primitives.Code) and not isinstance(use, str):
+        if not isinstance(use, fhir.primitive.Code) and not isinstance(use, str):
             raise TypeError('A code value must be of type Code or str.')
         string_use = use
-        if isinstance(use, fhir.primitives.Code):
+        if isinstance(use, fhir.primitive.Code):
             string_use = use.__str__()
         if string_use != 'usual' and string_use != 'official' and string_use != 'temp' and string_use != 'anonymous' \
                 and string_use != 'old' and string_use != 'maiden':
             raise ValueError('A Code value must be usual, official, temp, anonymous, old or maiden.')
-        self.__use = fhir.primitives.Code(string_use)
+        self.__use = fhir.primitive.Code(string_use)
 
     @property
     def text(self):

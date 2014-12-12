@@ -1,4 +1,4 @@
-import fhir.primitives
+import fhir.primitive
 import fhir.complex
 
 

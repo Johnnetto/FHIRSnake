@@ -2,7 +2,6 @@ __author__ = 'Federico Milano'
 
 import re
 
-
 class Code:
     def __init__(self, code):
         if not isinstance(code, str):
