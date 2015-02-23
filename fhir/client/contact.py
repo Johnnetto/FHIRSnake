@@ -1,5 +1,5 @@
-import fhir.primitive
-import fhir.complex
+import fhir.client.primitive
+import fhir.client.complex
 
 
 class Contact:
@@ -20,7 +20,7 @@ class Contact:
         self.__use = fhir.primitives.Code('home')
 
         # Time period when the contact was/is in use.
-        self.__period = fhir.complex.Period('', '')
+        self.__period = fhir.client.complex.Period('', '')
 
     @property
     def system(self):
@@ -70,7 +70,7 @@ class Contact:
 
     @period.setter
     def period(self, period):
-        if not isinstance(period, fhir.complex.Period):
+        if not isinstance(period, fhir.client.complex.Period):
             raise TypeError('A period value must be of type Period.')
 
     def str(self):

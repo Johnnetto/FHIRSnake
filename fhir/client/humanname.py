@@ -1,5 +1,5 @@
-import fhir.primitive
-import fhir.complex
+import fhir.client.primitive
+import fhir.client.complex
 
 
 class HumanName:
@@ -16,7 +16,7 @@ class HumanName:
     def __init__(self):
         # Identifies the purpose for this name.
 
-        self.__use = fhir.primitive.Code('home')
+        self.__use = fhir.client.primitive.Code('home')
 
         # A full text representation of the name.
         self.__text = ' '
@@ -37,7 +37,7 @@ class HumanName:
         self.__suffix = []
 
         # Indicates the period of time when this name was valid for the named person.
-        self.__period = fhir.complex.Period('', '')
+        self.__period = fhir.client.complex.Period('', '')
 
     @property
     def use(self):
@@ -45,15 +45,15 @@ class HumanName:
 
     @use.setter
     def use(self, use):
-        if not isinstance(use, fhir.primitive.Code) and not isinstance(use, str):
+        if not isinstance(use, fhir.client.primitive.Code) and not isinstance(use, str):
             raise TypeError('A code value must be of type Code or str.')
         string_use = use
-        if isinstance(use, fhir.primitive.Code):
+        if isinstance(use, fhir.client.primitive.Code):
             string_use = use.__str__()
         if string_use != 'usual' and string_use != 'official' and string_use != 'temp' and string_use != 'anonymous' \
                 and string_use != 'old' and string_use != 'maiden':
             raise ValueError('A Code value must be usual, official, temp, anonymous, old or maiden.')
-        self.__use = fhir.primitive.Code(string_use)
+        self.__use = fhir.client.primitive.Code(string_use)
 
     @property
     def text(self):
@@ -71,7 +71,7 @@ class HumanName:
 
     @period.setter
     def period(self, period):
-        if not isinstance(period, fhir.complex.Period):
+        if not isinstance(period, fhir.client.complex.Period):
             raise TypeError('A period value must be of type Period.')
 
     def str(self):
