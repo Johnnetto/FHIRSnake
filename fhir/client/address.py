@@ -1,7 +1,8 @@
 __author__ = 'Federico Milano'
 
 import fhir.client.primitive
-import fhir.client.period
+import fhir.client.complex
+
 
 class Address:
     def __init__(self):
@@ -11,7 +12,7 @@ class Address:
         self.state = ''
         self.zip = ''
         self.country = ''
-        self.__period = fhir.complex.Period('', '')
+        self.__period = fhir.client.complex.Period('', '')
 
     @property
     def code(self):
@@ -31,9 +32,9 @@ class Address:
     def period(self):
         return self.__period
 
-    @code.setter
+    @period.setter
     def period(self, period):
-        if not isinstance(period, fhir.complex.Period):
+        if not isinstance(period, fhir.client.complex.Period):
             raise TypeError('Period should be of Period type.')
 
     def str(self):
