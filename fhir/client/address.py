@@ -37,6 +37,6 @@ class Address:
         if not isinstance(period, fhir.client.complex.Period):
             raise TypeError('Period should be of Period type.')
 
-    def str(self):
+    def __str__(self):
         return 'text representation'
 
